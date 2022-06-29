@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	
+	creating an IIFE(Immediately Invoked Function Expression)
+	In script, we implement the revealing module pattern using IIFE.
+	We define the private variable (balance) as well as the functions that can access the private variable.
+	Then expose them in the return statement which also returns the object itself.
+	*/
+	
+	var account = (function(){
+		var balance = 1000;
+		
+		function getBalance(){
+				return balance;
+			}
+		function addInterest(interest){
+				balance+= interest;
+			}
+		
+		return {
+			name: "John",
+			getBalance: getBalance,
+			addInterest: addInterest
+		}
+	}());
+	
+	console.log(account.name);
+	console.log(account.getBalance());
+	
+	// this will not change the balance
+	account.balance = 2000;
+	console.log(account.getBalance())
+	
+	// but this will change the balance
+	account.addInterest(300);
+	console.log(account.getBalance())
+</script>
+</head>
+<body>
+<p>Amazing</p>
+</body>
+</html>

@@ -3,7 +3,13 @@
 <head>
 <script>
 
-	//creating an IIFE(instantly)
+	/*
+	
+	creating an IIFE(Immediately Invoked Function Expression)
+	In script, we implement the module pattern using IIFE.
+	We define the private variable (balance) as well as the functions that can access the private variable.
+	The return statement also returns the object itself.
+	*/
 	
 	var account = (function(){
 		var balance = 1000;
@@ -22,7 +28,12 @@
 	console.log(account.name);
 	console.log(account.getBalance());
 	
+	// this will not change the balance
 	account.balance = 2000;
+	console.log(account.getBalance())
+	
+	// but this will change the balance
+	account.addInterest(300);
 	console.log(account.getBalance())
 </script>
 </head>
