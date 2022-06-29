@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	//creating an IIFE(instantly)
+	
+	var account = (function(){
+		var balance = 1000;
+		
+		return {
+			name: "John",
+			getBalance: function(){
+				return balance;
+			},
+			addInterest: function(interest){
+				balance+= interest;
+			}
+		}
+	}());
+	
+	console.log(account.name);
+	console.log(account.getBalance());
+	
+	account.balance = 2000;
+	console.log(account.getBalance())
+</script>
+</head>
+<body>
+<p>Amazing</p>
+</body>
+</html>
