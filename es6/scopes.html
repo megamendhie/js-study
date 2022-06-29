@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	 difference between creating variables with var and let.
+	 
+	 let can be used to limit variable scope to the code block level. However, that is not possible with var
+	 
+	 const keyword is used to define variables that should not be changed.
+	*/
+	
+	function varDemo(){
+	var i = 5;
+	for(var i = 0; i<=10; i++)
+		console.log(i);
+	
+	console.log(i);
+	}
+	
+	function letDemo(){
+	let i = 5;
+	for(let i = 0; i<=10; i++){
+		console.log(i);
+		var x = 12; //this variable is hoisted to the top, even though it's defined in the for block
+	
+	}
+	
+	console.log(i);
+	console.log(x);
+	}
+	
+	varDemo();
+	letDemo();
+</script>
+</head>
+<body>
+<p>Amazing</p>
+</body>
+</html>
