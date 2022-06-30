@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	 map is a data structure that allows us to store key and value pairs.
+	*/
+	
+	let countries = new Map();
+	countries.set("Nigeria", "Abuja")
+	countries.set("US", "Washington DC");
+	countries.set("France", "Paris");
+	countries.set("United Kingdom", "London");
+	countries.set("Ghana", "Accra");
+	
+	
+	for(var c of countries)
+		console.log(c);
+	
+	//get the size of the map
+	console.log(countries.size);
+	
+	//find out if the map contains a particular key)
+	console.log(countries.has("Ghana")); //true
+	console.log(countries.has("Spain")); //false
+	
+	//set sets a key in a map and get gets the content of the key
+	console.log(countries.get("Nigeria"));
+	console.log(countries.get("Niger")); //this returns undefined because there's no Niger in the mao
+	
+	
+	//Another way to initialize a map
+	let votes = new Map([["Peter", 2300], ["Michael", 2063], ["Alex", 1798], ["Henry", 2109]]);
+	
+	for(var v of votes)
+		console.log(v);
+		
+	for(let key of votes.keys()){
+		console.log(key + " has "+ votes.get(key) + " votes.")
+	}
+	
+</script>
+</head>
+<body>
+<p>Maps and Sets</p>
+</body>
+</html>

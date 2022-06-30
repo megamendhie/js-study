@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	 object destructuring
+	*/
+	
+	var person = {firstName: "Alex",
+					lastName: "Bill",
+					age: 59,
+					complexion: "fair"
+				}
+				
+	const {fName, lName, age, cm} = person;
+	
+	console.log(`First name is ${fName},\nlast name is ${lName},\nage is ${age},\nand the complexion is ${cm}`);
+	
+	
+	/*
+	 array destructuring
+	*/
+	const cities = ["Paris", "London", "Lagos", "Madrid", "Las Vegas", "Dubai"];
+	const [c1, c2, c3, c4, c5, c6] = cities;
+	console.log(c1);
+	console.log(c2);
+	console.log(c3);
+
+</script>
+</head>
+<body>
+<p>Object Destructuring</p>
+</body>
+</html>
