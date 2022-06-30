@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	 sets store unique values
+	*/
+
+	let lang = new Set();
+	lang.add("Kotlin");
+	lang.add("Java");
+	lang.add("Javascript");
+	lang.add("Python");
+	lang.add("C++")
+	
+	
+	//looping a set
+	for(var l of lang)
+		console.log(l);
+	
+	//get the size of the set
+	console.log(lang.size)
+	
+	//check if a value exists
+	console.log(lang.has("Rust"));
+	
+	//Another way to initialize set
+	
+	let fruits = new Set().add("banana").add("carrot").add("orange");
+	console.log(fruits.size);
+	
+	for(var f of fruits)
+		console.log(f)
+</script>
+</head>
+<body>
+<p>Maps and Sets</p>
+</body>
+</html>
