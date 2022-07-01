@@ -26,12 +26,17 @@
 	console.log(lang.has("Rust"));
 	
 	//Another way to initialize set
-	
 	let fruits = new Set().add("banana").add("carrot").add("orange");
 	console.log(fruits.size);
 	
 	for(var f of fruits)
 		console.log(f)
+		
+	
+	//Another way to initialize set
+	let cars = new Set(["BMW", "Benz", "Tesla", "Toyota", "Ford"]);
+	for(let c of cars)
+		console.log(c);
 </script>
 </head>
 <body>
