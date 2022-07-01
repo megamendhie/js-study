@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+	/*
+	 inheritance allows for reusability of classes
+	*/
+	
+	class Country{
+		constructor(name, capital, president){
+			this.name = name;
+			this.capital = capital;
+			this.president = president;
+		}
+		
+		startElection(){
+			console.log("Start election");
+		}
+		
+		stopElection(){
+			console.log("Stop election");
+		}
+	}
+	
+	//we use the keyword 'extend' to signify inheritance from a parent class. We use the keyword 'super' to invoke the parent class consttructor
+	class AfricanCountry extends Country{
+		constructor(name, capital, president, ecowasMember){
+			super(name, capital, president);
+			this.ecowasMember = ecowasMember;
+		}
+	}
+	
+	class AmericanCountry extends Country{
+		constructor(name, capital, president, natoMember){
+			super(name, capital, president);
+			this.natoMember = natoMember;
+		}
+		
+		startElection(){
+			console.log("Start american election");
+		}
+		
+		stopElection(){
+			console.log("Stop american election");
+		}
+		
+		//To override a function of a parent class, simply declare and use the function in the child class 
+	}
+	
+	//create instances of AfricanCountry and AmericanCountry
+	
+	let Nigeria = new AfricanCountry("Nigeria", "Abuja", "Buhari", true);
+	let US = new AmericanCountry("United States", "Washington DC", "Biden", true);
+	
+	console.log(Nigeria);
+	Nigeria.startElection(); //child class can access function of a parent class
+	Nigeria.stopElection();
+	
+	console.log(US);
+	US.startElection(); //child class can access function of a parent class
+	US.stopElection();	
+
+</script>
+</head>
+<body>
+<p>Inheritance</p>
+</body>
+</html>
