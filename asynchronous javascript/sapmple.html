@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Simple Loader Sample</title></head>
+
+<body>
+
+<h2>Simple XmlHttpRequest loader sample</h2>
+
+<p>This example leads to loading from web</p>
+
+
+<script>
+	var lol = (text)=>{
+		console.log(text);
+		console.log("did that");		
+	}
+	
+ function loadFromWeb(lol){
+	var text = "";
+	let wave = new XMLHttpRequest()
+	wave.open("GET", "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json");
+	wave.onload = function(){
+		text = JSON.parse(wave.responseText);
+		console.log("finished and this is the status: "+ wave.status);
+		lol(text);
+		document.write(wave.responseText)
+	}
+	wave.send();
+ }
+ loadFromWeb(lol);
+</script>
+</body>
+</html>
