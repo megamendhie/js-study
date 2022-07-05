@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+<h2>async and await</h2>
+<button id="btn" >Load web</button> <br/>
+<p id="demo"></p>
+
+<script>	
+	/*
+	
+	The async keyword gives you a simpler way to work with asynchronous promise-based code.
+	Adding async at the start of a function makes it an async function:
+	
+	Inside an async function you can use the await keyword before a call to a function that returns a promise.
+	This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise is treated as a return value, or the rejected value is thrown.
+	
+	This enables you to write code that uses asynchronous functions but looks like synchronous code. For example, we could use it to rewrite our fetch example:
+	
+	*/
+	
+	const button = document.querySelector("#btn");
+	
+	async function loadWeb(){
+		try{
+			const response = await fetch("https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json");
+			if(!response.ok)
+				throw new Error(`mega HTTP error: ${response.status}`);
+			
+			console.log(response)
+			const data = await response.json();
+			console.log(data);
+		}
+			catch(error){
+			console.log(`could not retrieve page ${error}`);
+		}
+	}
+	
+	//await returns a promise, therefore it can be assined and used as shown
+	async function loadWebTwo(){
+		console.log("loadWebTwo() function called");
+		try{
+			const response = await fetch("https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json");
+			if(!response.ok)
+				throw new Error(`mega HTTP error: ${response.status}`);
+			
+			console.log(response)
+			const data = await response.json();
+			return data;
+		}
+			catch(error){
+			console.log(`could not retrieve page ${error}`);
+		}
+	}
+	
+	const promise = loadWebTwo();
+	promise.then(data=>{
+		console.log(data);
+	})
+	
+	
+
+
+ button.addEventListener('click', loadWeb);
+</script>
+</body>
+</html>
