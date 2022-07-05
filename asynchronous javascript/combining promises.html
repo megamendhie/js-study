@@ -1,34 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-	
-
-</head>
+<head></head>
 
 <body>
-
-<h2>Catching errors</h2>
-<button id="btn" >Combining multiple promises</button> <br/>
+<h2>Combining multiple promises</h2>
+<button id="btn" >Load Promise.all()</button> <br/>
+<button id="btn2" >Load Promise.all() bad url</button> <br/>
+<button id="btn3" >Load Promise.any()</button> <br/>
 <p id="demo"></p>
 
-<script>
+<script>	
 	/*
-	 Catching errors in fetch api
-	 
-	 To support error handling, Promise objects provide a catch() method.
-	 This is a lot like then(): you call it and pass in a handler function.
-	 However, while the handler passed to then() is called when the asynchronous operation succeeds,
-	 the handler passed to catch() is called when the asynchronous operation fails.
+	
+	Combining multiple promises
+	
 	*/
 
+const button = document.querySelector("#btn");
+const button2 = document.querySelector("#btn2");
+const button3 = document.querySelector("#btn3");
 	
-	// promise chaining
- function webCall(){
-	const fetchPromise = fetch("https://raw.giithubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json");
+/*
+	In the webCall function, all three requests are fulfilled even though the second one returns a 404 status. But that doesn't count as a fail or rejected.
 	
+	However, in webCallBad, it threw an error because the last url is badly formed.
 	
+	This is like Promise.any() is fulfilled as soon as any of the array of promises is fulfilled, or rejected if all of them are rejected.
+	It actually doesn't care which particular one, so far it's fulfilled.
+*/
+function webCall(){
+const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
+const fetchPromise3 = fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+
+ Promise.all([fetchPromise1,fetchPromise2,fetchPromise3])
+	.then(responses =>{
+		for(res of responses)
+			console.log(res);
+	})
+	.catch(error =>{
+		console.log(`megamendhie ${error}`);
+	});
  }
+ 
+function webCallBad(){
+const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
+const fetchPromise3 = fetch('bad-scheme://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+
+ Promise.all([fetchPromise1,fetchPromise2,fetchPromise3])
+	.then(responses =>{
+		for(res of responses)
+			console.log(res);
+	})
+	.catch(error =>{
+		console.log(`megamendhie ${error}`);
+	});
+ }
+  
+function webCallAny(){
+const fetchPromise1 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json');
+const fetchPromise2 = fetch('https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found');
+const fetchPromise3 = fetch('bad-scheme://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json');
+
+ Promise.any([fetchPromise1,fetchPromise2,fetchPromise3])
+	.then(response =>{
+			console.log(response);
+	})
+	.catch(error =>{
+		console.log(`megamendhie ${error}`);
+	});
+ }
+ 
+ button.addEventListener('click', webCall);
+ button2.addEventListener('click', webCallBad);
+ button3.addEventListener('click', webCallAny);
 </script>
 </body>
 </html>
