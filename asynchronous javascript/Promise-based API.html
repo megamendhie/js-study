@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Implemention of a promise-based API</title></head>
+
+<body>
+<h2>Implement of a promise-based API</h2>
+
+<div>
+Name: <input id="name" type="text" value="Matilda"></input> <p>
+Delay: <input id="delay" type="number" value="1000"></input> <p>
+<button id="btn">Set Alarm</button>
+<p id="info"></p>
+</div>
+
+<script>
+const name = document.querySelector("#name");
+const delay = document.querySelector("#delay");
+const btn = document.querySelector("#btn");
+const info = document.querySelector("#info");
+
+function setAlarm(name, delay){
+	return new Promise((resolve, reject) =>{
+		
+		if(delay<0){
+			throw new Error("Delay cannot be negative");
+		}
+		
+		setTimeout(()=>{
+			resolve(`Wake up, ${name}`)
+		}, delay);
+	});
+}
+
+btn.addEventListener('click', ()=>{
+	setAlarm(name.value, delay.value)
+	.then(message => info.innerHTML = message)
+	.catch(error => info.innerHTML = "Couldn't set alarm: "+error);
+})
+</script>
+</body>
+
+
+</html>
