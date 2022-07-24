@@ -3,11 +3,11 @@ var mysql = require('mysql2');
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "Mega4321@",
+	password: "xxxxx",
 	database: "mydb"
 });
 
-//Script creates connection to the sql server & create a table on the mydb database
+//Script creates connection to the sql server & alter a table on the mydb database
 con.connect(function(err){
 	if(err)throw err;
 	console.log("Connected!");
